@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+    <title>Travel Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+<!--     <link rel="stylesheet" href="index.css">
+--><meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+<!--Boostrap jQuery-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<style type="text/css">
+    body {
+        margin-top: 10px;
+        background-image: url('cc.jpg');
+        background-repeat: center;
+        /*background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg");*/
+    }
+
+    img {
+        margin: auto;
+        padding: 10px;
+        display: block;
+        max-width: 250px;
+    }
+
+    @media (min-width: 600px){
+        img{
+            max-width: 450px;
+        }
+    }
+.alert {
+    font-size: 20px;
+}
+    a {
+        cursor: pointer;
+    }
+
+    #next_button {
+        margin-top: 5px;
+        visibility: hidden;
+    }
+    /**/
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+.border {
+    border: 0.5px solid black!important;
+}
+.text-small {
+    font-size: 0.9rem !important;
+}
+
+.header {
+    background-color: #00d2ff;
+    background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 100%);
+}
+
+.section-1 {
+ /*   background: #f5f5f5;
+      background-image: url("https://www.shutterstock.com/image-vector/light-silver-gray-vector-polygon-abstract-654376090");
+    background-image: url('aa.png');*/
+}
+
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+.pt-5, .py-5 {
+    padding-top: 6rem!important;
+}
+.border-0 {
+    border-radius: 15px!important;
+}
+.btn-link {
+    color: black!important;
+}
+/**/
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://opentripmap.io/js/directory.en.js"></script>
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+  <div>
+
+
+
+
+
+    <div>
+        <!-- Demo header-->
+
+
+
+        <!-- Sticky navbar-->
+        <header class="header sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+                <div class="container"><a class="navbar-brand" href="home.html">
+                    <strong class="h5 mb-0 font-weight-bold text-uppercase">Travel Pro</strong></a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active"><a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Find Flights</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Find Hotels</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <section class="py-5 section-1">
+        <div class="container py-5 text-center">
+            <div class="container">
+             <h1 style="text-align: center;">Enter a place to get started</h1>
+             <form id="search_form" class="input-group mb-4 border p-1">
+                
+                <input id="textbox" type="search" placeholder="Enter the place name" aria-describedby="button-search" class="form-control bg-none border-0">
+                <div class="input-group-prepend border-0">
+                    <button id="button-search" type="submit" class="btn btn-link ">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+
+<div id="info" class="alert"></div>
+           <!--  <div id="info" class="alert alert-primary"></div> -->
+            <div class="row">
+                <div class="col-12 col-lg-5">
+                    <div id="list" class="list-group"></div>
+                    <nav class="text-center">
+                        <button id="next_button" type="button" class="btn btn-primary">
+                            Next
+                        </button>
+                    </nav>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div id="poi" class="alert"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    const apiKey = "5ae2e3f221c38a28845f05b66921fde5474fbf15a026fb433dff1ef7";
+
+    function apiGet(method, query) {
+        return new Promise(function (resolve, reject) {
+            var otmAPI =
+            "https://api.opentripmap.com/0.1/en/places/" +
+            method +
+            "?apikey=" +
+            apiKey;
+            if (query !== undefined) {
+                otmAPI += "&" + query;
+            }
+            fetch(otmAPI)
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(function (err) {
+                console.log("Fetch Error :-S", err);
+            });
+        });
+    }
+
+    const pageLength = 5;
+
+    let offset = 0;
+    let lon = 0;
+    let lat = 0;
+    let count = 0;
+
+    function onShowPOI(data) {
+        let poi = document.getElementById("poi");
+        poi.innerHTML = "";
+        if (data.preview) {
+            poi.innerHTML += `<img src="${data.preview.source}">`;
+        }
+        poi.innerHTML += data.wikipedia_extracts
+        ? data.wikipedia_extracts.html
+        : data.info
+        ? data.info.descr
+        : "No description";
+    }
+
+    function createListItem(item) {
+        let a = document.createElement("a");
+        a.className = "list-group-item list-group-item-action";
+        a.setAttribute("data-id", item.xid);
+        a.innerHTML = `<h5 class="list-group-item-heading">${item.name}</h5>
+        <p class="list-group-item-text">${getCategoryName(item.kinds)}</p>`;
+
+        a.addEventListener("click", function () {
+            document.querySelectorAll("#list a").forEach(function (item) {
+                item.classList.remove("active");
+            });
+            this.classList.add("active");
+            let xid = this.getAttribute("data-id");
+            apiGet("xid/" + xid).then(data => onShowPOI(data));
+        });
+        return a;
+    }
+
+    function loadList() {
+        apiGet(
+            "radius",
+            `radius=1000&limit=${pageLength}&offset=${offset}&lon=${lon}&lat=${lat}&rate=2&format=json`
+            ).then(function (data) {
+                let list = document.getElementById("list");
+                list.innerHTML = "";
+                data.forEach(item => list.appendChild(createListItem(item)));
+                let nextBtn = document.getElementById("next_button");
+                if (count < offset + pageLength) {
+                    nextBtn.style.visibility = "hidden";
+                } else {
+                    nextBtn.style.visibility = "visible";
+                    nextBtn.innerText = `Next (${offset + pageLength} of ${count})`;
+                }
+            });
+        }
+
+        function firstLoad() {
+            apiGet(
+                "radius",
+                `radius=1000&limit=${pageLength}&offset=${offset}&lon=${lon}&lat=${lat}&rate=2&format=count`
+                ).then(function (data) {
+                    count = data.count;
+                    offset = 0;
+                    document.getElementById(
+                        "info"
+                        ).innerHTML += `<p>${count} places with description in a 1km radius</p>`;
+                    loadList();
+                });
+            }
+
+            document
+            .getElementById("search_form")
+            .addEventListener("submit", function (event) {
+                let name = document.getElementById("textbox").value;
+                apiGet("geoname", "name=" + name).then(function (data) {
+                    let message = "Name not found";
+                    if (data.status == "OK") {
+                        message = data.name + ", " + getCountryName(data.country);
+                        lon = data.lon;
+                        lat = data.lat;
+                        firstLoad();
+                    }
+                    document.getElementById("info").innerHTML = `<p>${message}</p>`;
+                });
+                event.preventDefault();
+            });
+
+            document
+            .getElementById("next_button")
+            .addEventListener("click", function () {
+                offset += pageLength;
+                loadList();
+            });
+        </script>
+
+    </body></html>
